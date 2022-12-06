@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,38 +14,46 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get('/testarticle/{id}', [PostController::class, 'show'])-> whereNumber('id'); 
+Route::get('/contact', [PostController::class, 'contact'])->name('contact');
+Route::get('/accessoires', [PostController::class, 'accessoires'])->name('accessoires');
+Route::get('/bas', [PostController::class, 'bas'])->name('bas');
+Route::get('/ensemble', [PostController::class, 'ensemble'])->name('ensemble');
+Route::get('/hauts', [PostController::class, 'hauts'])->name('hauts');
+Route::get('/new', [PostController::class, 'new'])->name('new');
+Route::get('/robes', [PostController::class, 'robes'])->name('robes');
 
-Route::get('/new', function () {
-    return view('new');
-});
+//php artisan make:controller PostController
 
-Route::get('/hauts', function () {
-    return view('hauts');
-});
+// Route::get('/new', function () {
+//     return view('new');
+// });
 
-Route::get('/bas', function () {
-    return view('bas');
-});
+// Route::get('/hauts', function () {
+//     return view('produits.hauts');
+// });
 
-Route::get('/accessoires', function () {
-    return view('accessoires');
-});
+// Route::get('/bas', function () {
+//     return view('bas');
+// });
 
-Route::get('/ensembles', function () {
-    return view('ensembles');
-});
+// Route::get('/accessoires', function () {
+//     return view('produits.accessoires')->name('contact');;
+// });
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+// Route::get('/ensembles', function () {
+//     return view('ensembles');
+// });
 
-Route::get('/signin', function () {
-    return view('signin');
-});
+// Route::get('/contact', function () {
+//     return view('contact');
+// });
 
-Route::get('/robes', function () {
-    return view('robes');
-});
+// Route::get('/signin', function () {
+//     return view('signin');
+// });
+
+// Route::get('/robes', function () {
+//     return view('robes');
+// });

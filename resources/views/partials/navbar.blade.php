@@ -1,4 +1,4 @@
-<body class="home">
+<div class="home">
 	<div class="navbar navbar-inverse navbar-fixed-top headroom" >
 		<div class="container">
 			<div class="navbar-header">
@@ -12,11 +12,11 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Produit<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="hauts">Hauts</a></li>
-                            <li><a href="bas">Bas</a></li>
-                            <li><a href="robes">Robes</a></li>
-                            <li><a href="ensembles">Ensembles</a></li>
-                            <li><a href="accessoires">Accessoires</a></li>
+							<li><a href="{{ route('hauts') }}">Hauts</a></li>
+                            <li><a href="{{ route('bas') }}">Bas</a></li>
+                            <li><a href="{{ route('robes') }}">Robes</a></li>
+                            <li><a href="{{ route('ensemble') }}">Ensembles</a></li>
+                            <li><a href="{{ route('accessoires') }}">Accessoires</a></li>
 						</ul>
 					</li>
 					<li><a href="/contact">Contact</a></li>
@@ -24,4 +24,5 @@
 				</ul>
 			</div>
 		</div>
-	</div> 
+	</div>
+</div>
