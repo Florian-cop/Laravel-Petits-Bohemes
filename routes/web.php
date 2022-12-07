@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,21 +14,40 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', [PostController::class, 'index'])->name('home');
-Route::get('/testarticle/{id}', [PostController::class, 'show'])-> whereNumber('id'); 
-Route::get('/contact', [PostController::class, 'contact'])->name('contact');
-Route::get('/accessoires', [PostController::class, 'accessoires'])->name('accessoires');
-Route::get('/bas', [PostController::class, 'bas'])->name('bas');
-Route::get('/ensemble', [PostController::class, 'ensemble'])->name('ensemble');
-Route::get('/hauts', [PostController::class, 'hauts'])->name('hauts');
-Route::get('/new', [PostController::class, 'new'])->name('new');
-Route::get('/robes', [PostController::class, 'robes'])->name('robes');
+Route::get('/', [ArticleController::class, 'index'])->name('home');
+Route::get('/testarticle/{id}', [ArticleController::class, 'show'])-> whereNumber('id');
+// Route::get('/', [ArticleController::class, 'inscription'])->name('inscription');
+// Route::get('/', [ArticleController::class, 'connexion'])->name('connexion');
+Route::get('/contact', [ArticleController::class, 'contact'])->name('contact');
+Route::post('/contact', [ArticleController::class, 'formulairecontact'])->name('formulairecontact')->middleware('verified');
 
-//php artisan make:controller PostController
+Route::get('/accessoires', [ArticleController::class, 'index.accessoires'])->name('accessoires');
+Route::get('/bas', [ArticleController::class, 'bas'])->name('bas');
+Route::get('/ensemble', [ArticleController::class, 'ensemble'])->name('ensemble');
+Route::get('/hauts', [ArticleController::class, 'hauts'])->name('hauts');
+Route::get('/new', [ArticleController::class, 'newProduits'])->name('new');
+Route::get('/robes', [ArticleController::class, 'robes'])->name('robes');
 
-// Route::get('/new', function () {
-//     return view('new');
+//php artisan make:controller ArticleController
+
+// Route::get('/new/{id}', function ($id) {
+//     return view('produits.new');
 // });
+
+Route::prefix('admin')->group(function () {
+    Route::get('mapage', function () {
+        return redirect('/admin/mapage');
+    }
+    );
+    Route::get('article', function () {
+        return redirect('/admin/article');
+    }
+    );
+    Route::get('test', function () {
+        return 'Mon test';
+    }
+    );
+});
 
 // Route::get('/hauts', function () {
 //     return view('produits.hauts');

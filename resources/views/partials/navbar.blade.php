@@ -8,7 +8,7 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
 					<li ><a href="/">Home</a></li>
-					<li><a href="/new">Nouveauté</a></li>
+					<li><a href="{{ route('new') }}">Nouveauté</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Produit<b class="caret"></b></a>
 						<ul class="dropdown-menu">
@@ -19,7 +19,7 @@
                             <li><a href="{{ route('accessoires') }}">Accessoires</a></li>
 						</ul>
 					</li>
-					<li><a href="/contact">Contact</a></li>
+					<li><a href="{{ route('contact') }}">Contact</a></li>
 					<li><a class="btn" href="/signin">SIGN IN / SIGN UP</a></li>
 				</ul>
 			</div>
