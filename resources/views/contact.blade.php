@@ -1,26 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-	<header id="head" class="secondary"></header>
 	<div class="container">
-
-		<div class="">
 
 			<article class="col-sm-9">
 
 				<header class="">
-					<h1 class="page-title text-primary">Contact us</h1>
+					<h1 class="page-title text-dark">Contact us</h1>
 				</header>
 
-				<p class="text-primary">
+				<p class="text-dark">
 					We’d love to hear from you. Interested in working together? Fill out the form below with some info about your project and I will get back to you as soon as I can. Please allow a couple days for me to respond.
 				</p>
 
 				@if(request('email') != null && request('nom') != null && request('message') != null)
 						<h1>Votre message a bien été recu par notre équipe, merci de votre confiance</h1>
-						<h2>Nom : {{request('nom')}}</h2> 
-						<h2>Email : {{request('email') }}</h2>
-						<h2>Message : {{request('message') }}</h2>
 				@else
 					<form action="/contact" method=post>
 						{{ csrf_field() }}

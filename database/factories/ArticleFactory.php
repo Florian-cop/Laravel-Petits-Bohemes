@@ -14,10 +14,10 @@ class ArticleFactory extends Factory
     public function definition()
     {
         return [
-            'nom' =>$this->faker->sentence,
-            'categorie' =>$this->faker->sentence,
-            'image' => $this->faker->imageUrl(400, 400),
-            'prix'=>$this->faker->randomFloat(2,1,1000),
+            'nom' =>$this->faker->word,
+            'categorie' =>$this->faker->randomElement($array = array ('hauts','bas','robes','ensembles','accessoires')),
+            'image' => $this->faker->imageUrl(450, 300),
+            'prix'=>$this->faker->randomFloat(2,1,500),
             'created_at' =>now(),
         ];
     }
