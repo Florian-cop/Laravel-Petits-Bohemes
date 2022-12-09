@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
- <!-- Header-->
- <header class="bg-dark py-5">
+<!-- Header-->
+
+<header class="bg-dark py-5">
 	<div class="container px-4 px-lg-5 my-5">
 		<div class="text-center text-white">
 			<h1 class="display-4 fw-bolder">SITE DE VENTE DE VETEMENTS FEMININS</h1>
@@ -13,5 +14,9 @@
 			<p class="lead fw-normal text-white-50 mb-0">Acheter rapidement, sans prise de tête</p>
 		</div>
 	</div>
+	@yield('content')
 </header>
+@if(Auth::user() && Auth::user()->admin == 1 && strpos(url()->full(),'admin'))
+<h1 class="display-4 fw-bolder">Vous êtes connecter en tant qu'admin</h1>
+@endif
 @endsection

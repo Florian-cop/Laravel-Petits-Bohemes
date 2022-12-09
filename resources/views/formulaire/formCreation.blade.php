@@ -21,7 +21,7 @@
         <div class="card mt-2 mx-auto p-4 bg-light">
             <div class="card-body bg-light">
                 <div class = "container">
-                    <form method="POST" action="/article/create">
+                    <form method="POST" action="/admin/article/create">
                         {{ csrf_field() }}
                         <div class="controls">
                             <div class="row">
@@ -70,6 +70,11 @@
                 </div>
             </div>
         </div>
+        @if(request('nom') != null && request('categorie') != null && request('prix') != null && request('image') != null) 
+        <div class="col-md-12">
+            <a class="btn btn-success pt-2 justify-content" href="{{ route('accueil') }}">Accueil</a>
+        </div>
+    @endif
     </div>
 </div>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -40,7 +41,20 @@ class ArticleController extends Controller
         ]);
     }
 
+    public function admin()
+    {
+        return view('index');
+    }
     public function articleAll()
+    {
+        $articles = Article::orderBy('nom', 'asc')->simplePaginate(12);
+        return view('produits.articles', [
+            'articles'=> $articles
+        ]);
+    }
+
+
+    public function articleAdminAll()
     {
         $articles = Article::orderBy('nom', 'asc')->simplePaginate(12);
         return view('produits.articles', [
@@ -73,7 +87,7 @@ class ArticleController extends Controller
         };
     }
 
-    public function articleModif($id)
+    public function adminArticleModif($id)
     {
         $articles = Article::findOrfail($id);
         return view('formulaire.formModification', [
@@ -82,7 +96,7 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function articleUpdate (Request $request,$id)
+    public function adminArticleUpdate (Request $request,$id)
     {
         $articles = Article::findOrfail($id);
             
@@ -183,7 +197,7 @@ class ArticleController extends Controller
     }
     public function ensemble()
     {
-        $articles = Article::where('categorie','ensemble')->simplePaginate(12);
+        $articles = Article::where('categorie','ensembles')->simplePaginate(12);
         return view('produits.articles', [
             'articles'=> $articles
         ]);
@@ -202,5 +216,4 @@ class ArticleController extends Controller
             'articles'=> $articles
         ]);
     }
-
 }

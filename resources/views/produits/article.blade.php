@@ -12,14 +12,16 @@
                         <div class="text-center">
                             
                             <h5 class="fw-bolder">{{ $article->nom }}</h5>
-                            
+                            {{ $article->categorie }}<br>
                             {{ $article->prix }} €
                         </div>
                     </div>
                     <div class="card-footer pt-0 border-top-0 bg-transparent">
                         <div class="text-center">
-                            <a class="btn btn-outline-dark" href="{{ route('article.modification', ['id' =>$article->id]) }}">Modi Article</a>
-                            <a class="btn btn-outline-dark" href="{{ route('article.delete', ['id' =>$article->id]) }}">Sup Article</a>
+                            @if(Auth::user() && Auth::user()->admin == 1)
+                            <a class="btn btn-outline-dark" href="{{ route('admin.article.modification', ['id' =>$article->id]) }}">Modi Article</a>
+                            <a class="btn btn-outline-dark" href="{{ route('admin.article.delete', ['id' =>$article->id]) }}">Sup Article</a>
+                            @endif
                         </div>
                     </div>
                 </div>

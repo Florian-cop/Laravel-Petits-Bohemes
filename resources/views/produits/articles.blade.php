@@ -23,9 +23,13 @@
                     </div>
                     <div class="card-footer pt-0 border-top-0 bg-transparent">
                         <div class="text-center">
+                            @if(Auth::user() && Auth::user()->admin == 1 && strpos(url()->full(),'admin'))
+                            <a class="btn btn-outline-dark" href="{{ route('admin.article.show', ['id' =>$article->id]) }}">Voir Article<br></a><br>
+                            <a class="btn btn-outline-dark" href="{{ route('admin.article.modification', ['id' =>$article->id]) }}">Modif Article</a>
+                            <a class="btn btn-outline-dark" href="{{ route('admin.article.delete', ['id' =>$article->id]) }}">Sup Article</a>
+                            @else
                             <a class="btn btn-outline-dark" href="{{ route('article.show', ['id' =>$article->id]) }}">Voir Article <br></a><br>
-                            <a class="btn btn-outline-dark" href="{{ route('article.modification', ['id' =>$article->id]) }}">Modi Article</a>
-                            <a class="btn btn-outline-dark" href="{{ route('article.delete', ['id' =>$article->id]) }}">Sup Article</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -39,8 +43,5 @@
     {{ $articles->links('pagination.pagination') }}
 </div>
 </section>
-<div class="d-flex justify-content-center">
-    {{ $articles->links('pagination.pagination') }}
-</div>
 @endsection
 

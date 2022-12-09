@@ -68,11 +68,11 @@
                 
             </div>
         </div>
-                                        @if(request('nom') != null || request('categorie') != null || request('prix') != null || request('image') != null) 
-                                    <div class="col-md-12">
-                                        <a class="btn btn-success pt-2 justify-content" href="{{ route('accueil') }}">Accueil</a>
-                                    </div>
-                                @endif
+        @if(request('nom') != null || request('categorie') != null || request('prix') != null || request('image') != null) 
+            <div class="col-md-12">
+                <a class="btn btn-success pt-2 justify-content" href="{{ route('accueil') }}">Accueil</a>
+            </div>
+        @endif
     </div>
 </div>
 
